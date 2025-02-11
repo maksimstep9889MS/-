@@ -117,3 +117,31 @@ print(some_student)
 
 print(f"Student1 > Student2: {some_student > some_student2}")
 print(f"Lecturer1 > Lecturer2: {some_lecturer > some_lecturer2}")
+
+def average_grade_for_course_students(student_list, course):
+    total_grades = []
+    for student in student_list:
+        if course in student.grades:
+            total_grades.extend(student.grades[course])
+    if total_grades:
+        return round(sum(total_grades) / len(total_grades), 1)
+    return 0
+
+
+def average_grade_for_course_lecturers(lecturer_list, course):
+    total_grades = []
+    for lecturer in lecturer_list:
+        if course in lecturer.grades:
+            total_grades.extend(lecturer.grades[course])
+    if total_grades:
+        return round(sum(total_grades) / len(total_grades), 1)
+    return 0
+
+student_list = [some_student, some_student2]
+lecturer_list = [some_lecturer, some_lecturer2]
+
+python_average = average_grade_for_course_students(student_list, "Python")
+git_average = average_grade_for_course_lecturers(lecturer_list, "Git")
+
+print(f"Средняя оценка за Git среди лекторов: {git_average}")
+print(f"Средняя оценка за Python среди студентов: {python_average}")
